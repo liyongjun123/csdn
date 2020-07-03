@@ -3,6 +3,7 @@
 import requests
 import re
 import time
+import random
 payload = ""
 # 请求头
 headers = {
@@ -30,6 +31,8 @@ def getUrls(url):
                 new_urls.append(url)
     return new_urls
 
+print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+
 urllist = ["https://blog.csdn.net/lyndon_li/article/list/2", \
         "https://blog.csdn.net/lyndon_li/article/list/3", \
         "https://blog.csdn.net/lyndon_li/article/list/1"]
@@ -39,6 +42,8 @@ for u in urllist:
     #while True:
     for url in urls:
         requests.request("GET", url, data=payload, headers=headers)
-        print(url, "Ok")
-        time.sleep(5)
-time.sleep(300)
+        t = random.randint(3,6)
+        #print("%ds" % t)
+        print(url, "Ok", "%ds" % t)
+        time.sleep(t)
+#time.sleep(300)
